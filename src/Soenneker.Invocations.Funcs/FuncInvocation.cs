@@ -10,6 +10,9 @@ public sealed class FuncInvocation<T>
 {
     private readonly Func<object?, T> _func;
 
+    /// <summary>
+    /// Gets state.
+    /// </summary>
     public object? State { get; }
 
     public FuncInvocation(Func<object?, T> func, object? state)
@@ -18,6 +21,10 @@ public sealed class FuncInvocation<T>
         State = state;
     }
 
+    /// <summary>
+    /// Executes the invoke operation.
+    /// </summary>
+    /// <returns>The result of the operation.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public T Invoke() => _func(State);
 }
