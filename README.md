@@ -3,11 +3,23 @@
 [![](https://img.shields.io/nuget/dt/soenneker.invocations.funcs.svg?style=for-the-badge)](https://www.nuget.org/packages/soenneker.invocations.funcs/)
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.invocations.funcs/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.invocations.funcs/actions/workflows/codeql.yml)
 
-# ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Invocations.Funcs
-### Primitive for representing deferred, stateful function invocations with zero closure allocations.
+# Soenneker.Invocations.Funcs
 
-## Installation
+Deferred, stateful synchronous function invocation without closure capture.
 
-```
+## Install
+
+```bash
 dotnet add package Soenneker.Invocations.Funcs
 ```
+
+## What you get
+
+- `FuncInvocation<T>` — Deferred, stateful synchronous function invocation without closure capture.
+
+## API at a glance
+
+| API | What it does | Result / important behavior |
+| --- | --- | --- |
+| `FuncInvocation<T>.State` | Gets state. | Gets state. |
+| `FuncInvocation<T>.Invoke()` | Executes the invoke operation. | The result of the operation. |
