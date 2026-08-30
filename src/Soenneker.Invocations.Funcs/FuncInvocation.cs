@@ -11,10 +11,15 @@ public sealed class FuncInvocation<T>
     private readonly Func<object?, T> _func;
 
     /// <summary>
-    /// Gets state.
+    /// Gets the state passed to the function when <see cref="Invoke"/> is called.
     /// </summary>
     public object? State { get; }
 
+    /// <summary>
+    /// Creates a deferred function invocation from a function and its explicit state.
+    /// </summary>
+    /// <param name="func">The function to invoke.</param>
+    /// <param name="state">The state supplied to <paramref name="func"/>.</param>
     public FuncInvocation(Func<object?, T> func, object? state)
     {
         _func = func ?? throw new ArgumentNullException(nameof(func));
@@ -22,9 +27,9 @@ public sealed class FuncInvocation<T>
     }
 
     /// <summary>
-    /// Executes the invoke operation.
+    /// Invokes the function with <see cref="State"/>.
     /// </summary>
-    /// <returns>The result of the operation.</returns>
+    /// <returns>The value returned by the function.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public T Invoke() => _func(State);
 }
