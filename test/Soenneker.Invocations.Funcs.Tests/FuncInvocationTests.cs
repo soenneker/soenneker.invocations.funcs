@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Soenneker.Tests.Unit;
+using System.Threading;
 
 namespace Soenneker.Invocations.Funcs.Tests;
 
@@ -12,7 +13,7 @@ public sealed class FuncInvocationTests : UnitTest
     }
 
     [Test]
-    public async ValueTask Invoke_returns_result_from_explicit_state()
+    public async ValueTask Invoke_returns_result_from_explicit_state(CancellationToken cancellationToken)
     {
         var input = new Calculation(21);
         var invocation = new FuncInvocation<int>(static state => ((Calculation)state!).Input * 2, input);
